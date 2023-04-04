@@ -2,20 +2,20 @@
 
 ## usersテーブル
 
-| Column             | Type   | Option                                  |
-| ---------------    | ------ | --------------------------------------- |
-| nickname           | string | null: false                             |
-| email              | string | unique: true, null: false, default: "@" |
-| encrypted_password | string | null: false, default: ""                |
-| first_name         | string | null: false                             |
-| last_name          | string | null: false                             |
-| first_name_kana    | string | null: false                             |
-| last_name_kana     | string | null: false                             |
-| birthday           | date   | null: false                             |
+| Column             | Type   | Option                    |
+| ---------------    | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | unique: true, null: false |
+| encrypted_password | string | null: false, default: ""  |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Assosiation
-- has_many :item
-- has_many :history
+- has_many :items
+- has_many :histories
 
 ## itemsテーブル
 
@@ -26,9 +26,9 @@
 | category_id      | integer    | null: false                    |
 | situation _id    | integer    | null: false                    |
 | load_id          | integer    | null: false                    |
-| region_id        | integer    | null: false                    |
-| days_id          | integer    | null: false                    |
-| price            | string     | null: false                    |
+| prefecture_id        | integer    | null: false                    |
+| day_id           | integer    | null: false                    |
+| price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ### Assosiation
@@ -45,6 +45,7 @@
 ### Assosiation
 - belongs_to :user
 - belongs_to :item
+- has_one :delivery
 
 ## deliveries
 | Column           | Type       | Option                         |
