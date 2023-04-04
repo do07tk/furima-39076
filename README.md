@@ -27,7 +27,7 @@
 | situation_id     | integer    | null: false                    |
 | load_id          | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| deliveryDay_id   | integer    | null: false                    |
+| delivery_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
