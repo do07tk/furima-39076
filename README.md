@@ -2,46 +2,60 @@
 
 ## usersテーブル
 
-| Column          | Type   | Option                              |
-| --------------- | ------ | ----------------------------------- |
-| nickname        | string | null: false                         |
-| email           | string | null: false, default: "@"           |
-| password        | string | null: false, default: ""            |
-| first_name      | string | null: false                         |
-| last_name       | string | null: false                         |
-| first_name_kana | string | null: false                         |
-| last_name_kana  | string | null: false                         |
-| birthday        | date   | null: false                         |
+| Column             | Type   | Option                                  |
+| ---------------    | ------ | --------------------------------------- |
+| nickname           | string | null: false                             |
+| email              | string | unique: true, null: false, default: "@" |
+| encrypted_password | string | null: false, default: ""                |
+| first_name         | string | null: false                             |
+| last_name          | string | null: false                             |
+| first_name_kana    | string | null: false                             |
+| last_name_kana     | string | null: false                             |
+| birthday           | date   | null: false                             |
+
+### Assosiation
+- has_many :item
+- has_many :history
 
 ## itemsテーブル
 
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
-| image            | text       | null: false, default: ""       |
 | name             | string     | null: false                    |
 | content          | text       | null: false                    |
-| detail_category  | string     | null: false                    |
-| detail_situation | string     | null: false                    |
-| delivery_load    | string     | null: false                    |
-| delivery_region  | string     | null: false                    |
-| delivery_days    | string     | null: false                    |
-| price            | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
+| category_id      | integer    | null: false                    |
+| situation _id    | integer    | null: false                    |
+| load_id          | integer    | null: false                    |
+| region_id        | integer    | null: false                    |
+| days_id          | integer    | null: false                    |
+| price            | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+### Assosiation
+- belongs_to :user
+- has_one :history
 
 ## historiesテーブル
 
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Assosiation
+- belongs_to :user
+- belongs_to :item
 
 ## deliveries
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false, default: "-"      |
-| prefecture       | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
-| phone_number     | integer    | null: false                    |
-| history_id       | references | null: false, foreign_key: true |
+| phone_number     | string     | null: false                    |
+| history          | references | null: false, foreign_key: true |
+
+### Assosiation
+- belongs_to :history
