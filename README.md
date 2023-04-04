@@ -27,7 +27,7 @@
 | situation_id     | integer    | null: false                    |
 | load_id          | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| day_id           | integer    | null: false                    |
+| deliveryDay_id   | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
@@ -47,7 +47,7 @@
 - belongs_to :item
 - has_one :delivery
 
-## deliveries
+## deliveriesテーブル
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false, default: "-"      |
