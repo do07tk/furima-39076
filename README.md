@@ -24,9 +24,9 @@
 | name             | string     | null: false                    |
 | content          | text       | null: false                    |
 | category_id      | integer    | null: false                    |
-| situation _id    | integer    | null: false                    |
+| situation_id     | integer    | null: false                    |
 | load_id          | integer    | null: false                    |
-| prefecture_id        | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | day_id           | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
