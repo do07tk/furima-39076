@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   belongs_to :user
-  has_one :history
+  # has_one :history
   has_one_attached :image
 
   validates :name, { length: { maximum:40 }}
@@ -12,7 +12,8 @@ class Item < ApplicationRecord
   validates :load_id, numericality: { other_than: 1, message: "can't be blank"}
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank"}
   validates :deliveryDay_id, numericality: { other_than: 1, message: "can't be blank"}
-  validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" }, numericality: { greater_than: 299, less_than: 10000000, message: "is out of setting range" }
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" }
+  validates :price, numericality: { greater_than: 299, less_than: 10000000, message: "is out of setting range" }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
