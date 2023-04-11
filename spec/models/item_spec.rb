@@ -77,9 +77,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      # deliveryDay_id テストコード
-      it 'deliveryDay_idが1では登録できない' do
-        @item.deliveryDay_id = '1'
+      # deliveryday_id テストコード
+      it 'deliveryday_idが1では登録できない' do
+        @item.deliveryday_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Deliveryday can't be blank")
       end
