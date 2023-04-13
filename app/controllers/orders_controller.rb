@@ -28,6 +28,6 @@ before_action :set_order, only:[:index, :create]
   end
 
   def order_params
-    params.require(:order_delivery).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order_delivery).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 end
