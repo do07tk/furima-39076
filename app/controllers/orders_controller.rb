@@ -4,16 +4,22 @@ before_action :set_order, only:[:index, :create]
 
   def index
     @order_delivery = OrderDelivery.new
-    if user_signed_in? && current_user.id == @order.user.id
+    if current_user.id == @order.user.id
        redirect_to root_path
-    # else user_signed_in? && (current_user.id != @order.user.id) == @order.order.id
-    #   redirect_to root_path
+    elsif (current_user.id != @order.user.id) && @order.order.present?
+       redirect_to root_path
     end
   end
 
   def create
     @order_delivery = OrderDelivery.new(order_params)
     if @order_delivery.valid?
+       Payjp.api_key = "sk_test_4f7dc31f1b927b0c9519a166"
+       Payjp::Charge.create(
+        amount: @order.price,
+        card: order_params[:token],
+        currency: 'jpy'
+      )
        @order_delivery.save
        redirect_to root_path
     else

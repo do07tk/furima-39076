@@ -124,14 +124,11 @@
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
-            <%# 商品購入機能時に実装%>
-            <%# 商品が売れている場合は、sold outを表示しましょう %>
             <% if item.order.present? %>
               <div class="sold-out">
                 <span>Sold Out!!</span>
               </div>
             <% end %>
-            <%# //商品が売れている場合は、sold outを表示しましょう %>
 
           </div>
           <div class='item-info'>
