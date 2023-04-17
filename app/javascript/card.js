@@ -10,7 +10,7 @@ const pay = () => {
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
-
+  
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
@@ -20,6 +20,7 @@ const pay = () => {
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        debugger;
       }
       numberElement.clear();
       expiryElement.clear();
