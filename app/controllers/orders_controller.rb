@@ -33,8 +33,7 @@ before_action :set_order, only:[:index, :create]
   end
 
   def pay_item
-    secreat_key = "sk_test_4f7dc31f1b927b0c9519a166"
-    Payjp.api_key = secreat_key
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
     amount: @order.price,
     card: order_params[:token],
