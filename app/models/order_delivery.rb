@@ -1,7 +1,6 @@
 class OrderDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :order_id, :token
-
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :order_id
 
   with_options presence: true do
     validates :prefecture_id, :municipalities, :address
