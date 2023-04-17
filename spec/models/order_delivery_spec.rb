@@ -57,7 +57,7 @@ RSpec.describe OrderDelivery, type: :model do
       it '電話番号が12桁以上だと購入できない' do
         @order_delivery.phone_number = '090123456789'
         @order_delivery.valid?
-        expect(@order_delivery).to_not be_valid
+        expect(@order_delivery.errors.full_messages).to include("Phone number is too short")
       end
       it '電話番号が半角数値でないと購入できないこと' do
         @order_delivery.phone_number = '0901234567８'
